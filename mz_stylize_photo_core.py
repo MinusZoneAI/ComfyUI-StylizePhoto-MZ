@@ -102,6 +102,15 @@ def ksampler(kwargs):
     latent = common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)[0]
 
     image = VAEDecode().decode(vae, latent)[0]
+
+
+    watermark = kwargs.get("watermark", "")
+    if watermark != "":
+        image = Utils.tensor2pil(image)
+        image = Utils.add_watermark(image, watermark)
+        image = Utils.pil2tensor(image)
+        image = Utils.list_tensor2tensor([image])
+
     return (image,)
 
 

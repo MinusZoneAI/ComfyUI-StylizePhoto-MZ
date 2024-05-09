@@ -354,6 +354,50 @@ class Utils:
 
         return im.resize((newWidth, newHeight), Image.Resampling.LANCZOS)
 
+    def add_watermark(image, watermark):
+        if watermark == "":
+            return image
+        from PIL import ImageDraw, ImageFont
+
+        font_fullpath = Utils.download_model(
+            {
+                "url": "https://www.modelscope.cn/api/v1/models/wailovet/MinusZoneAIModels/repo?Revision=master&FilePath=font%2FAlibabaPuHuiTi-2-75-SemiBold.ttf",
+                "output": "font/AlibabaPuHuiTi-2-75-SemiBold.ttf",
+            }
+        )
+
+        watermarks = watermark.split("\n")
+
+        width, height = image.size
+        short_edge = min(width, height)
+        font_size = short_edge // 12
+ 
+            
+        font = ImageFont.truetype(font_fullpath, font_size)
+        draw = ImageDraw.Draw(image) 
+
+        text = watermarks[0]
+        textwidth, textheight = draw.textsize(text, font) 
+        
+        x = (width - textwidth) // 2
+
+        bottom = 10
+
+        y = height - textheight - (textheight * 0.4 + bottom + 8)
+        draw.text((x, y), text, font=font) 
+
+        if len(watermarks) > 1:
+            y1 = y + textheight
+            text = watermarks[1]
+            font_size = int(font_size * 0.4)
+            font = ImageFont.truetype(font_fullpath, font_size)
+            textwidth, textheight = draw.textsize(text, font)
+            x = (width - textwidth) // 2
+            y = y1 - bottom + 4
+            draw.text((x, y), text, font=font)
+
+        return image
+
     def get_device():
         return comfy.model_management.get_torch_device()
 

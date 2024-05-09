@@ -1,1 +1,1 @@
-# ComfyUI-StylizePhoto
+# ComfyUI-StylizePhoto-MZ

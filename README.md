@@ -20,3 +20,9 @@ A stylized node with simple operation. The effect is achieved by I2I and lora. T
 + StylizePhotoControlNetApply
 
 ![image](https://github.com/MinusZoneAI/ComfyUI-StylizePhoto-MZ/assets/5035199/adb059f1-6271-4d2e-b51e-591987362f44)
+
+## Contact
+- 绿泡泡: minrszone
+- Bilibili: [minus_zone](https://space.bilibili.com/5950992)
+- 小红书: [MinusZoneAI](https://www.xiaohongshu.com/user/profile/5f072e990000000001005472)
+- 爱发电: [MinusZoneAI](https://afdian.net/@MinusZoneAI)

@@ -1,1 +1,1 @@
-# ComfyUI-StylizeFilters
+# ComfyUI-StylizePhoto

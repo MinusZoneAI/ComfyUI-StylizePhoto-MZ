@@ -37,7 +37,7 @@ class MZ_StylizePhotoKSamplerNode:
             "required":{
                 "xl_ckpt_name": (["none"] + folder_paths.get_filename_list("checkpoints"),),
                 "image": ("IMAGE",),
-                "resolution": ("INT", {"default": 1280, "min": -1, "max": MAX_RESOLUTION}),
+                "resolution": ("INT", {"default": 1024, "min": -1, "max": MAX_RESOLUTION}),
                 "style_type": (STYLE_TYPE,),
                 "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
                 "steps": ("INT", {"default": 35, "min": 1, "max": 10000}),

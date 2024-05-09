@@ -84,6 +84,7 @@ class MZ_StylizePhotoControlNetApply:
         return {"required": required}
 
     RETURN_TYPES = ("StylizePhoto_CONTROL_NET",)
+    RETURN_NAMES = ("control_net",)
     FUNCTION = "load_controlnet"
     CATEGORY = CATEGORY_NAME
 

@@ -17,7 +17,7 @@ FIXED_QUALITY_PROMPT = "(high quality), (best quality), (masterpiece), (8K resol
 STYLE_PROMPTS = {
     "clay.v1": {
         # "positive": "clay_world,clay_style,plasticine_style,photography,macro,tilt shift,cute,by Adult Swim,",
-        "positive": "clay,clay_model,photography,macro,cute,by Makoto Shinkai,clear_pupils,",
+        "positive": "clay,clay_model,photography,macro,cute,by Makoto Shinkai,brilliant_and_bright,",
         "negative": "blurry,noisy,text,watermark"
     }
 }

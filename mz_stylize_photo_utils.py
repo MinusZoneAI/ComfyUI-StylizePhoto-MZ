@@ -342,7 +342,7 @@ class Utils:
     def resize_max(im, dst_w, dst_h):
         src_w, src_h = im.size
 
-        if src_h < src_w:
+        if src_h > src_w:
             newWidth = dst_w
             newHeight = dst_w * src_h // src_w
         else:

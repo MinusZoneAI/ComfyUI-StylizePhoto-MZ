@@ -11,6 +11,15 @@ A stylized node with simple operation. The effect is achieved by I2I and lora. T
 1. Clone this repo into `custom_nodes` folder.
 2. Restart ComfyUI.
 
+## Notes
+### 示例中使用的模型 Models used in the examples
+
++ 基础模型来自(base model from)  [JuggernautV8XL](https://civitai.com/models/133005?modelVersionId=288982)
+
++ tile controlnet模型来自 [TTPLanet_SDXL_Controlnet_Tile_Realistic](https://civitai.com/models/330313?modelVersionId=370104)
+
++ canny controlnet模型来自 [controlnet-canny-sdxl-1.0](https://huggingface.co/diffusers/controlnet-canny-sdxl-1.0)
+
 ## Nodes
 + StylizePhotoKSampler
   

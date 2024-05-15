@@ -357,7 +357,27 @@ class Utils:
     def add_watermark(image, watermark):
         if watermark == "":
             return image
-        from PIL import ImageDraw, ImageFont
+
+        try:
+            import PIL
+            from PIL import ImageDraw, ImageFont
+        except ImportError:
+            subprocess.run([
+                sys.executable, "-m",
+                "pip", "install", "Pillow"], check=True)
+            import PIL
+            from PIL import ImageDraw, ImageFont
+
+        # 获取PIL版本号
+        pil_version = PIL.__version__
+
+        
+        if pil_version >= "10.0.0":
+            def textsize(self, text, font):
+                left, top, right, bottom = self.textbbox((0, 0), text, font)
+                return right - left, bottom - top
+            ImageDraw.ImageDraw.textsize = textsize
+
 
         font_fullpath = Utils.download_model(
             {
@@ -371,20 +391,23 @@ class Utils:
         width, height = image.size
         short_edge = min(width, height)
         font_size = short_edge // 12
- 
-            
+
         font = ImageFont.truetype(font_fullpath, font_size)
-        draw = ImageDraw.Draw(image) 
+
+
+        # print("pil_version:", pil_version)
+
+        draw = ImageDraw.Draw(image)
 
         text = watermarks[0]
-        textwidth, textheight = draw.textsize(text, font) 
-        
+        textwidth, textheight = draw.textsize(text, font)
+
         x = (width - textwidth) // 2
 
         bottom = 10
 
         y = height - textheight - (textheight * 0.4 + bottom + 8)
-        draw.text((x, y), text, font=font) 
+        draw.text((x, y), text, font=font)
 
         if len(watermarks) > 1:
             y1 = y + textheight
@@ -562,8 +585,8 @@ class Utils:
         if os.environ.get("MZ_DEV", None) is not None:
             print(*args)
 
-    def download_model(model_info, only_get_path=False):  
- 
+    def download_model(model_info, only_get_path=False):
+
         url = model_info["url"]
         output = model_info["output"]
         save_path = os.path.abspath(
@@ -573,12 +596,11 @@ class Utils:
                 return None
             save_path = Utils.download_file(url, save_path)
         return save_path
-    
-
 
     def load_lora(model, lora_path, strength_model):
-        lora = comfy.utils.load_torch_file(lora_path, safe_load=True) 
-        model_lora, _ = comfy.sd.load_lora_for_models(model, None, lora, strength_model, 0)
+        lora = comfy.utils.load_torch_file(lora_path, safe_load=True)
+        model_lora, _ = comfy.sd.load_lora_for_models(
+            model, None, lora, strength_model, 0)
         return model_lora
 
 

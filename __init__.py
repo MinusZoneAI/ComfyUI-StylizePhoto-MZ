@@ -8,8 +8,8 @@ import folder_paths
 import comfy.samplers
 
 
-AUTHOR_NAME = u"[MinusZone]"
-CATEGORY_NAME = f"{AUTHOR_NAME} StylizePhoto"
+AUTHOR_NAME = u"MinusZone"
+CATEGORY_NAME = f"{AUTHOR_NAME} - StylizePhoto"
 
 sys.path.append(os.path.join(os.path.dirname(__file__)))
 

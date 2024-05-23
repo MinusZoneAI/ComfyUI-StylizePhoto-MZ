@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-stylizephoto-mz"
+description = "A stylized node with simple operation. The effect is achieved by I2I and lora. The clay style is currently implemented.Comes with watermark function."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/MinusZoneAI/ComfyUI-StylizePhoto-MZ"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-StylizePhoto-MZ"
+Icon = ""
